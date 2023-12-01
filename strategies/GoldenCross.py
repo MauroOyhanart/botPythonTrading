@@ -1,6 +1,9 @@
 import math
 import backtrader as bt
 
+# Strategy: Cross Method -> Golden Cross. 
+# # Dos SMA, una corto plazo, una largo plazo. La de 50 cruza a la de 200 hacia arriba. Indica posible cambio a tendencia alcista.
+
 class GoldenCross(bt.Strategy):
     params = (('fast', 50),('slow',200),('order_porcentage', 0.95),('ticker', 'BTC'))
     def __init__(self):

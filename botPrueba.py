@@ -1,6 +1,6 @@
 from __future__ import (absolute_import, division, print_function, unicode_literals)
 import datetime
-from GoldenCross import GoldenCross
+from strategies.GoldenCross import GoldenCross
 import backtrader as bt 
 from PIL import Image
 
@@ -8,14 +8,14 @@ if __name__ == '__main__':
     cerebro = bt.Cerebro()
 
     dataDAY = bt.feeds.YahooFinanceCSVData(
-        dataname='BTC-USD-DAY.csv',
+        dataname='./dataset/BTC-USD-DAY.csv',
         fromdate=datetime.datetime(2018, 11, 1),
         todate=datetime.datetime(2023, 11, 29),
         reverse=False
     )
 
     dataMONTH = bt.feeds.YahooFinanceCSVData(
-        dataname='BTC-USD-MONTH.csv',
+        dataname='./dataset/BTC-USD-MONTH.csv',
         fromdate=datetime.datetime(2018, 11, 1),
         todate=datetime.datetime(2023, 11, 29),
         reverse=False
