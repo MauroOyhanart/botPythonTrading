@@ -8,11 +8,11 @@ class GoldenCross(bt.Strategy):
     params = (('fast', 50),('slow',200),('order_porcentage', 0.95),('ticker', 'BTC'))
     def __init__(self):
         self.fast_moving_average = bt.indicators.SMA(
-            self.data.close, period= self.params.fast,plotname='Media Movil 50 Periodos'
+            self.data.close, period= self.params.fast,plotname='Media Movil - 50 Periodos'
         )
 
         self.slow_moving_average = bt.indicators.SMA(
-            self.data.close, period= self.params.slow,plotname='Media Movil 200 Periodos'
+            self.data.close, period= self.params.slow,plotname='Media Movil - 200 Periodos'
         )
 
         self.crossover = bt.indicators.CrossOver(self.fast_moving_average, self.slow_moving_average)
