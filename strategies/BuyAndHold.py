@@ -10,4 +10,5 @@ class BuyAndHold(bt.Strategy):
         if self.position.size == 0:
             amount_to_invest = self.params.order_percentage * self.broker.cash
             self.size = amount_to_invest / self.data.close[0]
+            print(f"Comprando {self.size} acciones de {self.params.ticker} a {self.data.close[0]}")
             self.buy(size=self.size)
