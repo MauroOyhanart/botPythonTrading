@@ -28,6 +28,9 @@ if __name__ == '__main__':
     # Configuracion del capital inicial
     cerebro.broker.set_cash(10000.0)
     
+    # Configuración de la comisión (0.001%)
+    cerebro.broker.setcommission(commission=0.00001)
+
     # Impresion del saldo inicial
     saldoInicial = cerebro.broker.getvalue()
     print('Saldo Inicial: %.2f' % saldoInicial)
