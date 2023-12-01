@@ -1,7 +1,7 @@
 import backtrader as bt
 
 class BuyAndHold(bt.Strategy):
-    params = (('order_percentage', 1.0), ('ticker', 'BTC'))
+    params = (('order_percentage', 1.0), ('ticker', 'USD'))
 
     def __init__(self):
         pass
