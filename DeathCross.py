@@ -1,0 +1,32 @@
+import math
+import backtrader as bt
+
+# Strategy: Cross Method -> Death Cross. 
+# # Dos SMA, una corto plazo, una largo plazo. La de 50 cruza a la de 200 hacia abajo. Indica posible cambio a tendencia bajista.
+
+class DeathCross(bt.Strategy):
+    params = (('fast', 50), ('slow', 200), ('order_porcentage', 0.95), ('ticker', 'BTC'))
+
+    def _init_(self):
+        self.fast_moving_average = bt.indicators.SMA(
+            self.data.close, period=self.params.fast, plotname='Media Movil 50 Periodos'
+        )
+
+        self.slow_moving_average = bt.indicators.SMA(
+            self.data.close, period=self.params.slow, plotname='Media Movil 200 Periodos'
+        )
+
+        self.crossover = bt.indicators.CrossDown(self.fast_moving_average, self.slow_moving_average)
+
+    def next(self):
+        if self.position.size == 0:
+            if self.crossover > 0:
+                amount_to_invest = (self.params.order_porcentage * self.broker.cash)
+                self.size = math.floor(amount_to_invest / self.data.close)
+                print("Buy {} shares of {} at {}".format(self.size, self.params.ticker, self.data.close[0]))
+                self.buy(size=self.size)
+
+        if self.position.size > 0:
+            if self.crossover < 0:
+                print("Sell {} shares of {} at {}".format(self.size, self.params.ticker, self.data.close[0]))
+                self.close()
