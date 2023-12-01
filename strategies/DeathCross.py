@@ -7,7 +7,7 @@ import backtrader as bt
 class DeathCross(bt.Strategy):
     params = (('fast', 50), ('slow', 200), ('order_porcentage', 0.95), ('ticker', 'BTC'))
 
-    def _init_(self):
+    def __init__(self):
         self.fast_moving_average = bt.indicators.SMA(
             self.data.close, period=self.params.fast, plotname='Media Movil 50 Periodos'
         )
