@@ -1,9 +1,6 @@
 from __future__ import (absolute_import, division, print_function, unicode_literals)
 import datetime
-from strategies.GoldenCross import GoldenCross
-from strategies.DeathCross import DeathCross
-from strategies.MACD import MACDStrategy
-from strategies.BuyAndHold import BuyAndHold
+from strategies.NuestraStrategy import NuestraStrategy
 import backtrader as bt 
 from PIL import Image
 
@@ -23,7 +20,7 @@ if __name__ == '__main__':
     cerebro.adddata(dataDAY)
 
     # Adicion de la estrategia MACD al cerebro
-    cerebro.addstrategy(MACDStrategy)
+    cerebro.addstrategy(NuestraStrategy)
 
     # Configuracion del capital inicial
     cerebro.broker.set_cash(10000.0)
